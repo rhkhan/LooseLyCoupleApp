@@ -1,0 +1,57 @@
+﻿<div ng-controller="registerController">
+
+    <div class="page-header">Register User: </div>
+    <hr />
+
+    <table>
+        <tr>
+            <td width="126px;">First Name: </td>
+            <td>
+                <input type="text" ng-model="user.Firstname" class="form-control" />
+                <i ng-validation-icon="user.$errors.Firstname"><label></label></i>
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td><input type="text" ng-model="user.Lastname" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Email ID: </td>
+            <td><input type="text" ng-model="user.Email" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>User name: </td>
+            <td><input type="text" ng-model="user.Username" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" ng-model="user.PasswordHash" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" ng-model="user.confirmPassword" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>User Type (Role):</td>
+            <td>
+                <select multiple="multiple" name="selectedRoleId" ng-model="user.selectedRole" class="form-control">
+                    <option ng:repeat="role in roleList" value="{{role.Name}}">{{role.Name}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-left:126px;">
+                <input type="button" class="btn btn-primary" ng-click="submitForm()" value="Register" />
+            </td>
+        </tr>
+    </table>
+
+    <ul>
+        <li ng-repeat="err in valResult.errors" class="alert-warning">{{ err.propertyName }}: {{ err.errorMessage }}</li>
+    </ul>
+
+    <div class="alert-warning" ng-show="hasModelErrors">
+        <span ng-bind-html="error"></span>
+    </div>
+
+</div>

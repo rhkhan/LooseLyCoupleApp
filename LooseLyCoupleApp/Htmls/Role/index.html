@@ -1,0 +1,52 @@
+﻿<!--<div ng-controller="roleOperationController">-->
+<div>
+    <div class="page-header">Role List</div>
+    <a href="/Role/Create" class="btn btn-default col-lg-offset-11">Add Role</a>
+
+
+    <form class="form-inline tab-content ">
+        <div class="form-group">
+            <input type="text" ng-model="search" class="form-control" placeholder="search" />
+        </div>
+    </form>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th ng-click="sort('AspRolesID')">
+                    ID
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='AspRolesID'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('Name')">
+                    Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--<tr ng-repeat="r in roleList | filter:search | orderBy:sortKey:reverse">-->
+            <tr dir-paginate="r in roleList|filter:search|orderBy:sortKey:reverse|itemsPerPage:5">
+                <td>
+                    {{r.AspRolesID}}
+                </td>
+                <td>{{r.Name}}</td>
+                <td>
+                    <input type="hidden" ng-model="r.AspRolesID" />
+                    <a class="editBtnCls" href="/Role/edit/{{r.AspRolesID}}"></a>
+                    <a class="assignBtnCls" href="/Role/assignPermission/{{r.AspRolesID}}"></a>
+                    <!--<button class="btn btn-danger" ng-click="deleteRole()">Delete</button>-->
+                    <a class="deleteBtnCls" href="#" ng-click="deleteRole()"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <dir-pagination-controls max-size="5"
+                             dirction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
+
+
+
+</div>

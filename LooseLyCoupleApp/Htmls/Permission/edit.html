@@ -1,0 +1,27 @@
+﻿<div ng-controller="permissionController" ng-init="initiateEditPermission()">
+
+    
+    <div class="page-header">Permission: </div>
+    <hr />
+
+    <form id="frm" name="frm">
+
+        <table>
+            <tr>
+                <td>Permission name:</td>
+                <td>
+                    <input type="hidden" ng-model="permission.Id" />
+                    <input type="text" ng-model="permission.PermissionDescription" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:119px;">
+                    <input type="button" class="btn btn-primary" value="Submit"
+                           ng-click="EditPermission()" />
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+</div>

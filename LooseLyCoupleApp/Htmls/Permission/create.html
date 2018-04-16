@@ -1,0 +1,36 @@
+﻿
+<div ng-controller="permissionController as p">
+
+    <div class="page-header">Permission: </div>
+    <hr />
+
+    <!--<form id="frm" name="frm">-->
+
+        <table>
+            <tr>
+                <td>Permission name:</td>
+                <td>
+                    <input type="text" ng-model="p.permission.description" class="form-control" />
+                </td>
+                <td>
+                    <i ng-validation-icon="p.permission.$errors.description"><label></label></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="padding-left:119px;">
+                    <input type="button" class="btn btn-primary" value="Submit"
+                           ng-click="p.submitForm()" />
+                </td>
+            </tr>
+        </table>
+
+    <!--</form>-->
+
+    <ul>
+        <li ng-repeat="err in p.valResult.errors" class="alert-warning">{{ err.propertyName }}: {{ err.errorMessage }}</li>
+    </ul>
+
+</div>
+
+
+

@@ -1,0 +1,77 @@
+﻿@*<div data-ng-controller="indexViewModel">
+    <div class="jumbotron">
+        <h1>{{ sessionName }}</h1>
+        <h2>Auther: <b>{{ speakerName }}</b></h2>
+    </div>
+</div>*@
+
+<script type="text/javascript">
+    window.LooslyCoupleApp = {};
+</script>
+
+<script type="text/javascript">
+    LooslyCoupleApp.rootPath = '@Url.Content("~")';
+    @*@RenderSection("jsCode", required: false)*@
+</script>
+
+
+<script src="~/Scripts/app.js"></script>
+@*<script src="~/Scripts/factory/Scopes.js"></script>*@
+<script src="~/Scripts/Controllers/indexController.js"></script>
+<script src="~/Scripts/Controllers/checkUserStateController.js"></script>
+<script src="~/Scripts/Services/modalService.js"></script>
+
+<script src="~/Scripts/Controllers/role/roleController.js"></script>
+<script src="~/Scripts/Controllers/role/rolePermissionController.js"></script>
+<script src="~/Scripts/factory/role/roleService.js"></script>
+
+<script src="~/Scripts/Controllers/Account/registerController.js"></script>
+<script src="~/Scripts/factory/Account/registerService.js"></script>
+<script src="~/Scripts/Services/UserRoleService.js"></script>
+
+<script src="~/Scripts/Controllers/Permission/permissionController.js"></script>
+<script src="~/Scripts/factory/Permission/permissionFactory.js"></script>
+
+<script src="~/Scripts/Services/loginService.js"></script>
+
+<script src="~/Scripts/Controllers/Product/productsController.js"></script>
+<script src="~/Scripts/factory/Product/productFactory.js"></script>
+
+<script src="~/Scripts/factory/validation/roleModel.js"></script>
+<script src="~/Scripts/factory/validation/roleValidator.js"></script>
+<script src="~/Scripts/factory/validation/userValidator.js"></script>
+<script src="~/Scripts/factory/validation/permissionValidator.js"></script>
+
+<script src="~/Scripts/Controllers/Appointment/appointmentController.js"></script>
+<script src="~/Scripts/factory/Appointment/appointmentFactory.js"></script> 
+<script src="~/Scripts/factory/validation/appointmentValidator.js"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="checkUserStateController">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="Home/Contact" ng-if="userState!=undefined">Contact Us</a></li>
+                <li><a href="Home/About">About</a></li>
+                <li><a href="Role/List" ng-if="userState!=undefined">Role</a></li>
+                <li><a href="Register/List" ng-if="userState!=undefined">Register</a></li>
+                <li><a href="Permission/List" ng-if="userState!=undefined">Permission</a></li>
+                <li><a href="Login/user" ng-if="userState==undefined || userState==null">Login</a></li>
+                <li><a href="Login/user" ng-if="userState!=undefined">Logout</a></li>
+                <li><a href="Product/List" ng-if="userState!=undefined">Product</a></li>
+                <li><a href="Appointment/List">Appointment</a></li>
+            </ul>
+            @*@Html.Partial("_LoginPartial")*@
+        </div>
+    </div>
+</div>
+
+<div ng-view></div>
+

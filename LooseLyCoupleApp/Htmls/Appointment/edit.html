@@ -1,0 +1,54 @@
+﻿<div class="page-header">Update Appointment Information </div>
+<hr />
+
+<div ng-controller="appointmentEditController">
+    <form id="frm" name="frm">
+        <table>
+            <tr>
+                <td width="126px;">Patient Name: </td>
+                <td>
+                    <input type="hidden" ng-model="mAppoint.Id" />
+                    <input type="text" ng-model="mAppoint.PatientName" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td width="126px;">Phone: </td>
+                <td><input type="text" ng-model="mAppoint.Phone" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Appointment type: </td>
+                <td><input type="text" ng-model="mAppoint.appType" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Appointment ID: </td>
+                <td><input type="text" ng-model="mAppoint.appID" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>SI:</td>
+                <td><input type="text" ng-model="mAppoint.SI" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>
+                    <datepicker date-format="yyyy-MM-dd">
+                        <input ng-model="mAppoint.appDate" type="text" />
+                    </datepicker>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:126px;">
+                    <input type="button" class="btn btn-primary" ng-click="updateAppointment()" value="Save" />
+                </td>
+            </tr>
+        </table>
+
+        <ul>
+            <li ng-repeat="err in valResult.errors" class="alert-warning">{{ err.propertyName }}: {{ err.errorMessage }}</li>
+        </ul>
+
+        <div class="alert-warning" ng-show="hasModelErrors">
+            <span ng-bind-html="error"></span>
+        </div>
+
+    </form>
+</div>

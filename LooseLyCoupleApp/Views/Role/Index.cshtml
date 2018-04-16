@@ -1,0 +1,37 @@
+﻿
+@*@section scripts {
+    <script src="~/Scripts/Services/modalService.js"></script>
+    <script src="~/Scripts/Controllers/roleController.js"></script>
+    <script src="~/Scripts/Services/roleService.js"></script>
+   
+}*@
+
+@*@section jsCode {
+    angular.bootstrap(document.getElementById("roleAngDiv"), ['roleDiv']);
+}*@
+
+@*<div ng-app="roleDiv" id="roleAngDiv" ng-controller="roleOperationController">*@
+
+<div ng-app="roleDiv" id="roleAngDiv" ng-controller="roleOperationController">
+        <table class="table" border="1">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Actions</td>
+            </tr>
+            <tr ng-repeat="r in roleList">
+                <td>
+                    {{r.AspRolesID}}
+                </td>
+                <td>{{r.Name}}</td>
+                <td>
+                    <input type="hidden" ng-model="r.AspRolesID" />
+                    <button class="btn btn-sm" ng-click="createRole()">Add</button>
+                    <button class="btn btn-default" ng-click="editRole()">Edit</button>
+                    <button class="btn btn-danger" ng-click="deleteRole()">Delete</button>
+            </tr>
+        </table>
+
+        <div ng-view></div>
+    </div>
+

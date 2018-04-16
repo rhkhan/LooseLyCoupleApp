@@ -1,0 +1,88 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.checkBoxClass label{
+font-size:24px;
+}
+
+.msgBox{
+    background-color:lightskyblue;
+    width:480px;
+    height:40px;
+}
+
+input[type=checkbox] { display:none; }
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:before { content: "\f096"; color:black;}
+input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { content: "\f046"; color:green;} /* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 5px; }
+
+
+a:hover{
+    text-decoration:none;
+}
+
+.editBtnCls:before{
+    content: "\f040";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size:24px;
+    text-decoration: inherit;
+    width:0px;
+    height:0px;
+    color:coral;
+}
+
+.assignBtnCls:before{
+    content: "\f0ae";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size:24px;
+    text-decoration: inherit;
+    width:0px;
+    height:0px;
+    color:cadetblue;
+}
+
+.deleteBtnCls:before{
+    content: "\f014";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size:24px;
+    text-decoration: inherit;
+    width:0px;
+    height:0px;
+    color:red;
+}

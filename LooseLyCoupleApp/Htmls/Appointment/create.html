@@ -1,0 +1,107 @@
+﻿<div ng-controller="appointmentController">
+    <div class="page-header">Make appointment: </div>
+    <hr />
+
+    <table>
+        <tr>
+            <td width="126px;">Patient name: </td>
+            <td>
+                <input type="text" ng-model="mAppoint.PatientName" class="form-control" />
+                <i ng-validation-icon="mAppoint.$errors.PatientName"><label></label></i>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td><input type="text" ng-model="mAppoint.Phone" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Appointment type: </td>
+            <td><!--<input type="text" ng-model="mAppoint.appType" class="form-control" />-->
+            <select ng-model="mAppoint.appType" class="form-control">
+                <option value="0">--Select appointment type--</option>
+                <option ng-repeat="a in appointmentTypes" value="{{a.appointmentID}}">
+                    {{a.appointmentName}}
+                </option>
+            </select>
+                <!--<span>Selected appointment id is {{mAppoint.appType}}</span>  
+                <select ng-model="mAppoint.appType2"
+                        ng-options="a.appointmentID as a.appointmentName for a in appointmentTypes">
+                </select>
+                {{mAppoint.appType2}}-->
+            </td>
+        </tr>
+        <tr>
+            <td>Appointment ID: </td>
+            <td><input type="text" ng-model="mAppoint.appID" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>SI:</td>
+            <td><input type="text" ng-model="mAppoint.SI" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>
+                <datepicker date-format="yyyy-MM-dd">
+                    <input ng-model="mAppoint.appDate" type="text" />
+                </datepicker>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-left:126px;">
+                <input type="button" class="btn btn-primary" ng-click="submitForm()" value="Save" />
+            </td>
+        </tr>
+    </table>
+
+    <ul>
+        <li ng-repeat="err in valResult.errors" class="alert-warning">{{ err.propertyName }}: {{ err.errorMessage }}</li>
+    </ul>
+
+    <div class="alert-warning" ng-show="hasModelErrors">
+        <span ng-bind-html="error"></span>
+    </div>
+
+
+    <table id="addMoreTable" class="table-striped">
+        <tr>
+            <td><input type="button" class="btn btn-sm" ng-click="addRows()" value="Add More" /></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="a1" id="a1" /></td>
+            <td><input type="text" name="b1" id="b1" /></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Employees
+            </th>
+            <th>
+                Head Office
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        <tr ng-repeat="company in companies">
+            <td>{{company.name}}</td>
+            <td>{{company.employees}}</td>
+            <td>{{company.headoffice}}</td>
+            <td>
+                <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(company.name)" />
+                <input type="button" value="Remove by index" class="btn btn-primary" ng-click="removeR($index)" />
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+

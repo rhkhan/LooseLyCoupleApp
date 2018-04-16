@@ -1,0 +1,54 @@
+﻿<div ng-controller="rolePermissionController" ng-init="loadPermissionsWithStatusGrid()">
+
+    <div class="page-header">Assign Permissions To Role: </div>
+
+    <!--<pre ng-show="Status!=null " class="msgBox">
+        {{Status}}
+    </pre>-->
+
+    <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)"></flash-message>
+
+    <form class="form-inline tab-content ">
+        <div class="form-group">
+            <input type="text" ng-model="search" class="form-control" placeholder="search" />
+        </div>
+    </form>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Permissions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="p in permissions|filter:search|itemsPerPage:5" current-page="currentPage">
+                <td>{{p.PermissionDescription}}
+                    <div ng-hide="true">
+                        {{indexCount=($index+1)+(currentPage*5)-5}}
+                    </div>
+                </td>
+                <td>
+                    <!--<a href="#" ng-click="SavePermission(p.PermissionId,$index,p.PermissionDescription)"
+               ng-class="{'blueBtnStyle glyphicon glyphicon-plus':p.Status==0 ,'greenBtnStyle glyphicon glyphicon-ok':p.Status==1}">
+            </a>
+            <a href="#" ng-click="RemovePermission(p.PermissionId,$index,p.PermissionDescription)" class="glyphicon glyphicon-remove"
+               style="color:red" ng-if="p.Status==1">
+            </a>-->
+
+                    <div class="checkBoxClass" style="width:20px;">
+                        <input id="{{'checkInput'+indexCount}}" type="checkbox" ng-model="chkPermission" ng-checked="p.Status==1" ng-click="SavePermission(p.PermissionId,$index,chkPermission,p.PermissionDescription)" />
+                        <label for="{{'checkInput'+indexCount}}"></label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <dir-pagination-controls max-size="5"
+                             dirction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
+</div>
+
+<a href="/Role/List" class="btn btn-info col-lg-offset-5 col-lg-3">Done</a>

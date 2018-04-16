@@ -1,0 +1,66 @@
+﻿
+<div class="page-header">User List</div>
+
+<a href="/Register/Create" class="btn btn-default col-lg-offset-11">Create</a>
+
+<form class="form-inline tab-content ">
+    <div class="form-group">
+        <input type="text" ng-model="search" class="form-control" placeholder="search" />
+    </div>
+</form>
+
+<div ng-controller="registerController" ng-init="initUsers()">
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Full name</th>
+                <th>User name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr dir-paginate="u in userList|filter:search|itemsPerPage:5">
+                <td>{{u.Firstname}} {{u.Lastname}}</td>
+                <td>{{u.Username}}</td>
+                <td>{{u.Email}}</td>
+                <td>
+                    <input type="hidden" ng-model="u.Id" />
+                    <!--<button class="btn-info" ng-click="AssignedRoles(u.Id)">Show Roles</button>-->
+                    <a href="/Register/Edit/{{u.Id}}" class="editBtnCls"></a>
+                    <a class="assignBtnCls" href="#" ng-click="AssignedRoles(u.Id)"></a>
+                    <!--<button class="btn btn-danger" ng-click="deleteRole()">Delete</button>-->
+                </td>
+            </tr>
+        </tbody>
+
+</table>
+
+    <dir-pagination-controls max-size="5"
+                             dirction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
+
+
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Assigned Roles</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    {{item.Name}}
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <!--<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+        </div>
+    </script>
+
+</div>
+

@@ -1,0 +1,47 @@
+﻿<div class="page-header">Update User Information </div>
+<hr />
+
+<div ng-controller="registerEditController">
+    <form id="frm" name="frm">
+        <table>
+            <tr>
+                <td width="126px;">First Name: </td>
+                <td>
+                    <input type="hidden" ng-model="user.Id" />
+                    <input type="text" ng-model="user.Firstname" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td>
+                    <input type="text" ng-model="user.Lastname" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>User name: </td>
+                <td><input type="text" ng-model="user.Username" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" ng-model="user.PasswordHash" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>User Type: </td>
+                <td>
+                    <select multiple ng-init="loadSelect()"
+                            ng-model="user.selectedRole"
+                            ng-options="role.name for role in roles track by role.id"
+                            required="" class="form-control"></select>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 123px; padding-top: 13px;" colspan="2">
+                    <input type="button" class="btn btn-primary" value="Submit"
+                           ng-click="EditRegisterForm()" />
+                </td>
+            </tr>
+        </table>
+
+
+</form>
+</div>

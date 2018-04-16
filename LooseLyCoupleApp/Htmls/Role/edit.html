@@ -1,0 +1,26 @@
+﻿
+<!--<div ng-controller="roleOperationController">-->
+    <div>
+        <div class="page-header">Role: </div>
+        <hr />
+
+        <form id="frm" name="frm">
+
+            <table>
+                <tr>
+                    <td>Role name:</td>
+                    <td>
+                        <input type="hidden" ng-model="vmr.roleId" />
+                        <input type="text" ng-model="vmr.roleName" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-left:78px;">
+                        <input type="button" class="btn btn-primary" value="Submit"
+                               ng-click="EditRoleForm()" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>

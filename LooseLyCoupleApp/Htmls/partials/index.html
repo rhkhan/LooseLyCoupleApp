@@ -1,0 +1,37 @@
+﻿
+<div ng-controller="indexController as vm" ng-init="vm.initializeController()">
+
+    <div ng-if="vm.userCookie!=undefined">
+        <!--<a class="btn-block" ng-click="vm.logout()">Logout</a>-->
+        <pre> 
+             Welcome <b>{{vm.userCookie}}</b>
+            <button type="button" class="btn btn-warning" ng-click="vm.logout()">Logout</button>
+        </pre>
+    </div>
+    
+    
+    <div ng-if="vm.userCookie==undefined" class="form-inline">
+        <div class="page-header"><h3> Please Sign In: </h3></div>
+        <form ng-submit="vm.login()">
+            <table>
+                <tr>
+                    <td>User Name: </td>
+                    <td><input type="text" ng-model="vm.user.Username" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" ng-model="vm.user.PasswordHash" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn btn-success" style="padding-left:15px; margin-left:78px;">Login</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+
+
+

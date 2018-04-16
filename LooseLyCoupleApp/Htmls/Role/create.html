@@ -1,0 +1,36 @@
+﻿
+<!--<div ng-controller="roleOperationController">-->
+<div>
+    <div class="page-header">Role: </div>
+    <hr />
+
+    <form id="frm" name="frm">
+        <table>
+            <tr>
+                <td>Role name:</td>
+                <td>
+                    <input type="text" ng-model="role.name" class="form-control" />
+                    <i ng-validation-icon="role.$errors.name"><label></label></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:78px;">
+                    <input type="button" class="btn btn-primary" value="Submit"
+                           ng-click="submitForm()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+    <ul>
+        <li ng-repeat="err in valResult.errors" class="alert-warning">{{ err.propertyName }}: {{ err.errorMessage }}</li>
+    </ul>
+
+    <div class="alert-warning" ng-show="hasModelErrors">
+        <span ng-bind-html="error"></span>
+    </div>
+
+</div>
+
+
